@@ -1677,7 +1677,7 @@ body {
    ========================================================== */
 .work-hero {
   display: grid;
-  grid-template-columns: 1fr 517px;
+  grid-template-columns: minmax(0, 1fr) 517px;
   margin-top: 72px;
 }
 
@@ -1787,7 +1787,6 @@ body {
 
 .work-note img {
   flex: none;
-  width: 44px;
 }
 
 .work-note p {
@@ -2035,7 +2034,8 @@ body {
    Browsers without this feature skip it and simply show the row. */
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
-    .site-row {
+    .site-row,
+    .rise {
       animation: rise-in linear both;
       animation-timeline: view();
       animation-range: entry 0% entry 60%;
@@ -2048,6 +2048,483 @@ body {
       }
     }
   }
+}
+
+/* ==========================================================
+   Project page details shared by the other four pages
+   ========================================================== */
+.work-hero--banner { grid-template-columns: minmax(0, 1fr) 478px; }
+.work-hero--poster { grid-template-columns: minmax(0, 1fr) 338px; }
+.work-hero--video { grid-template-columns: minmax(0, 1fr) 539px; }
+
+.work-hero--banner .work-hero__media { margin-top: 53px; }
+
+.work-meta--small {
+  font-size: 18px;
+}
+
+.work-meta--small .work-meta__row {
+  grid-template-columns: 90px 18px 1fr;
+  gap: 11px;
+}
+
+.work-meta--small .work-meta__chips {
+  gap: 9px;
+}
+
+.work-meta--small .work-meta__chips li {
+  min-width: 0;
+  padding-inline: 6px;
+}
+
+/* Title, a thin vertical line, then the text. */
+.work-overview--line {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 20px;
+  align-items: center;
+  padding: 40px 12px 40px 20px;
+}
+
+.work-overview--line .work-overview__text {
+  margin-top: 0;
+  padding: 8px 0 8px 20px;
+  border-left: 2px solid var(--color-accent);
+}
+
+.work-points {
+  margin-top: var(--space-section);
+}
+
+.work-points .thinking-card {
+  min-height: 243px;
+  padding: 40px 16px 48px;
+}
+
+.work-points .thinking-card h3 {
+  font-size: 22px;
+}
+
+.work-notes--even .work-notes__grid {
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.work-notes--even .work-note {
+  justify-content: center;
+  background: rgba(179, 158, 209, 0.4);
+}
+
+.work-note__list {
+  padding-left: 12px;
+  border-left: 2px solid var(--color-accent);
+  list-style: disc;
+}
+
+/* The left margin makes room for the dot, so wrapped lines stay aligned. */
+.work-note__list li {
+  margin-left: 1.5em;
+}
+
+.work-note--stack {
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px 32px;
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  text-align: center;
+}
+
+.work-note--stack p,
+.work-note--stack .work-note__list {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.work-note--stack .work-note__list {
+  text-align: left;
+}
+
+/* ----- Click to enlarge -----
+   A button that holds an image and opens a popover. */
+.zoom {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.zoom img {
+  width: 100%;
+}
+
+/* :popover-open matches only while it is showing. Do not set display
+   on .zoom-view itself, or it would stay visible all the time. */
+.zoom-view {
+  max-width: 92vw;
+  max-height: 92dvh;
+  padding: 0;
+  border: 0;
+  background: none;
+  overflow: auto;
+}
+
+.zoom-view:popover-open {
+  animation: view-in 0.25s ease;
+}
+
+.zoom-view::backdrop {
+  background: rgba(67, 44, 124, 0.8);
+}
+
+.zoom-view > img {
+  width: auto;
+  max-width: 92vw;
+  max-height: 92dvh;
+  height: auto;
+}
+
+.zoom-view__spread {
+  display: flex;
+  gap: 4px;
+}
+
+.zoom-view__spread img {
+  width: auto;
+  max-width: 46vw;
+  max-height: 92dvh;
+  height: auto;
+}
+
+/* fixed keeps the close button in the screen corner, even if the view scrolls. */
+.zoom-view__close {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--color-white);
+  color: var(--color-deep);
+  cursor: pointer;
+  font: inherit;
+  font-size: 28px;
+  line-height: 1;
+}
+
+@keyframes view-in {
+  from { opacity: 0; }
+}
+
+/* Hover effects, only with a real mouse and when motion is welcome. */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .zoom:hover {
+    opacity: 1;
+    transform: translateY(-6px);
+  }
+
+  /* :has() asks "does this group contain a hovered button?". If so, fade the others. */
+  .zoom-group:has(.zoom:hover) .zoom:not(:hover) {
+    opacity: 0.55;
+  }
+
+  .zoom--tilt:hover {
+    transform: perspective(1000px) rotateY(-10deg) rotateX(2deg);
+  }
+}
+
+.banner-frame {
+  border: 5px solid var(--color-white);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+}
+
+.work-hero--banner .banner-frame {
+  aspect-ratio: 478 / 305;
+  object-fit: cover;
+  box-shadow: var(--shadow-card);
+}
+
+.work-poster img {
+  border: 10px solid var(--color-white);
+  box-shadow: 0 4px 4px rgba(134, 115, 195, 0.67);
+}
+
+/* ----- 学校説明会バナー ----- */
+.banner-sizes,
+.poster-section,
+.video-content,
+.zine-intro {
+  margin-top: var(--space-section);
+}
+
+/* Named grid areas: the layout reads like a small map of the board. */
+.size-board {
+  display: grid;
+  grid-template-areas:
+    "main   tall"
+    "narrow tall"
+    "wide   wide";
+  grid-template-columns: 1fr 122px;
+  gap: 26px;
+  align-items: start;
+  width: min(100%, 749px);
+  margin: 32px auto 0;
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.54);
+}
+
+.size-board__main { grid-area: main; width: 87%; }
+.size-board__tall { grid-area: tall; }
+.size-board__narrow { grid-area: narrow; width: 97%; }
+.size-board__wide { grid-area: wide; }
+
+.size-board__main img {
+  aspect-ratio: 507 / 323;
+  object-fit: cover;
+}
+
+/* ----- アートと人 ----- */
+.poster-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 43px;
+  margin-top: 32px;
+}
+
+.poster-row figure,
+.zine-spread {
+  margin: 0;
+}
+
+.poster-row figcaption,
+.zine-spread figcaption {
+  margin-top: 20px;
+  font-size: var(--fs-body);
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* ----- ビビンバ ----- */
+.video-hero {
+  margin-top: 120px;
+}
+
+.video-hero__frame {
+  display: block;
+  padding: 8px 8px 10px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: var(--shadow-card);
+}
+
+.video-hero__thumb {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+.video-hero__thumb > img:first-child {
+  width: 100%;
+  transition: transform 0.4s;
+}
+
+/* translate(-50%, -50%) centers the play mark on the thumbnail. */
+.video-hero__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.8);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.video-hero__bar {
+  width: 100%;
+  margin-top: 8px;
+  opacity: 0.8;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .video-hero__frame:hover {
+    opacity: 1;
+  }
+
+  .video-hero__frame:hover .video-hero__thumb > img:first-child {
+    transform: scale(1.04);
+  }
+
+  .video-hero__frame:hover .video-hero__play {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .video-step:hover img {
+    transform: translateY(-6px) rotate(-1.5deg);
+  }
+
+  .video-step:nth-child(even):hover img {
+    transform: translateY(-6px) rotate(1.5deg);
+  }
+}
+
+.youtube-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 86px;
+  margin-top: 28px;
+  padding: 10px 20px;
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius-panel);
+  color: var(--color-primary);
+}
+
+.youtube-box img {
+  flex: none;
+}
+
+.youtube-box > span {
+  min-width: 0;
+}
+
+.youtube-box__label {
+  display: block;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.youtube-box__url {
+  display: block;
+  font-weight: 600;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  text-decoration: underline;
+  word-break: normal;
+}
+
+/* The steps sit under a line like a video progress bar.
+   padding-top leaves room; ::before is the track, ::after the filled part. */
+.video-steps {
+  --rail: 18px;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  margin: 40px 0 0;
+  padding: calc(var(--rail) + 22px) 0 0;
+  list-style: none;
+  /* Gives this box a name, so the ::after below can follow its scroll position. */
+  view-timeline-name: --video-steps;
+}
+
+.video-steps::before,
+.video-steps::after {
+  content: "";
+  position: absolute;
+  top: var(--rail);
+  left: 0;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--color-track);
+}
+
+.video-steps::after {
+  background: var(--color-primary);
+  transform-origin: left;
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .video-steps::after {
+      animation: fill-line linear both;
+      animation-timeline: --video-steps;
+      animation-range: entry 40% cover 60%;
+    }
+
+    @keyframes fill-line {
+      from { transform: scaleX(0); }
+    }
+  }
+}
+
+.video-step {
+  position: relative;
+  text-align: center;
+}
+
+/* One dot on the line above each step. */
+.video-step::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: -27px;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  border: 3px solid var(--color-white);
+  border-radius: 50%;
+  background: var(--color-primary);
+  transform: translateX(-50%);
+}
+
+.video-step h3 {
+  color: var(--color-deep);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.video-step img {
+  width: 100%;
+  margin-top: 12px;
+  border: 5px solid var(--color-white);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.3s;
+}
+
+.video-step p {
+  margin-top: 20px;
+  line-height: 1.7;
+}
+
+/* ----- 香の記憶 ----- */
+.zine-board {
+  display: grid;
+  grid-template-columns: repeat(2, 366px);
+  gap: 40px;
+  justify-content: center;
+  margin-top: 32px;
+  padding: 40px 24px;
+  background: var(--color-chip);
+}
+
+.zine-spread__pages {
+  display: flex;
+  gap: 10px;
+  /* perspective gives the rotated pages a real sense of depth. */
+  perspective: 900px;
+}
+
+.zine-spread__pages img {
+  width: calc(50% - 5px);
+  padding: 8px;
+  background: var(--color-white);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.4s;
+}
+
+/* transform-origin is the hinge: each page turns around the book's spine. */
+.zine-spread__pages img:first-child { transform-origin: right center; }
+.zine-spread__pages img:last-child { transform-origin: left center; }
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .zoom:hover .zine-spread__pages img:first-child { transform: rotateY(16deg); }
+  .zoom:hover .zine-spread__pages img:last-child { transform: rotateY(-16deg); }
 }
 
 /* ==========================================================
@@ -2213,7 +2690,7 @@ body {
   }
 
   .work-hero {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 32px;
     margin-top: 40px;
   }
@@ -2243,6 +2720,60 @@ body {
 
   .site-row__text {
     white-space: normal;
+  }
+
+  .work-hero--banner,
+  .work-hero--poster,
+  .work-hero--video {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .work-hero--banner .work-hero__media,
+  .video-hero {
+    margin-top: 0;
+  }
+
+  .work-poster.work-hero__media {
+    width: min(100%, 338px);
+    margin-inline: auto;
+  }
+
+  .work-hero--banner .work-hero__media {
+    width: min(100%, 478px);
+    margin-inline: auto;
+  }
+
+  .video-hero {
+    width: min(100%, 539px);
+    margin-inline: auto;
+  }
+
+  /* The title moves above the text, and the text wraps on its own. */
+  .work-overview--line {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 32px 24px;
+  }
+
+  .work-overview--line .work-overview__text {
+    padding: 0;
+    border-left: 0;
+  }
+
+  .work-overview--line .work-overview__text br {
+    display: none;
+  }
+
+  .poster-row {
+    gap: 24px;
+  }
+
+  .video-steps {
+    gap: 24px;
+  }
+
+  .zine-board {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -2630,5 +3161,92 @@ body {
 
   .site-row__title {
     font-size: 24px;
+  }
+
+  .work-notes--even .work-notes__grid,
+  .zine-board {
+    grid-template-columns: 1fr;
+  }
+
+  .work-note--stack {
+    padding: 32px 20px;
+    font-size: 18px;
+  }
+
+  /* Natural line breaks, because a phone is too narrow for the Figma ones. */
+  .work-lead br,
+  .work-notes--even .work-note p br {
+    display: none;
+  }
+
+  /* This more specific rule is needed to beat the desktop version above. */
+  .work-meta--small .work-meta__row {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .size-board {
+    grid-template-areas:
+      "main"
+      "narrow"
+      "wide"
+      "tall";
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .size-board__main,
+  .size-board__narrow {
+    width: 100%;
+  }
+
+  .size-board__tall {
+    width: 122px;
+    margin-inline: auto;
+  }
+
+  .poster-row {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .poster-row figure {
+    width: min(100%, 300px);
+    margin-inline: auto;
+  }
+
+  /* Two steps per row: the progress line would not make sense, so it is hidden. */
+  .video-steps {
+    grid-template-columns: repeat(2, 1fr);
+    padding-top: 0;
+    gap: 24px 16px;
+  }
+
+  .video-steps::before,
+  .video-steps::after,
+  .video-step::before {
+    display: none;
+  }
+
+  .video-step h3 {
+    font-size: 20px;
+  }
+
+  .youtube-box {
+    padding: 10px 14px;
+  }
+
+  .youtube-box__url {
+    font-size: 14px;
+  }
+
+  /* On a phone, the two enlarged pages stack and scroll instead of shrinking. */
+  .zoom-view__spread {
+    flex-direction: column;
+  }
+
+  .zoom-view__spread img {
+    max-width: 92vw;
+    max-height: none;
   }
 }
