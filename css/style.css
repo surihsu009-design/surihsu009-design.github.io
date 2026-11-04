@@ -1,0 +1,1099 @@
+/* ==========================================================
+   Design tokens
+   A token is a named value. Change it once here and every
+   place that uses it updates.
+   ========================================================== */
+:root {
+  --color-deep: #432C7C;
+  --color-primary: #5D40A8;
+  --color-heading-alt: #604F99;
+  --color-band: #6D5BA9;
+  --color-mid: #7158B3;
+  --color-hero-name: #7355BF;
+  --color-subheading: #7464A8;
+  --color-soft-purple: #7D70A9;
+  --color-accent: #8673C3;
+  --color-note-icon: #715EB0;
+  --color-photo-bg: #B0A4D9;
+  --color-line: #B39ED1;
+  --color-chip: rgba(202, 187, 222, 0.88);
+  --color-panel: rgba(202, 187, 222, 0.71);
+  --color-track: #CDBAE9;
+  --color-process: rgba(205, 192, 224, 0.6);
+  --color-page-tint: #E0D7F1;
+  --color-corner: #E0DAEB;
+  --color-text: #000000;
+  --color-white: #FFFFFF;
+
+  --font-jp: "Noto Sans JP", sans-serif;
+  --font-en: "Inter", "Noto Sans JP", sans-serif;
+  --font-number: "Noto Serif JP", serif;
+
+  --fs-page-title: 64px;
+  --fs-hero-name: 60px;
+  --fs-work-title: 45px;
+  --fs-section: 36px;
+  --fs-card-title: 20px;
+  --fs-body: 20px;
+  --fs-small: 16px;
+
+  --space-section: 112px;
+  --page-width: 1200px;
+  --content-width: 1000px;
+  --radius-card: 20px;
+  --radius-panel: 10px;
+  --radius-nav: 7px;
+  --radius-chip: 3px;
+  --shadow-card: 0 4px 4px rgba(0, 0, 0, 0.25);
+  --shadow-soft: 0 4px 8px rgba(93, 64, 168, 0.42);
+  --shadow-panel: 0 4px 4px rgba(134, 115, 195, 0.3);
+}
+
+/* ==========================================================
+   Base styles
+   ========================================================== */
+
+/* border-box means width includes padding and border. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+/* A small hover effect: only devices with a real mouse get it. */
+@media (hover: hover) {
+  a:hover {
+    opacity: 0.8;
+  }
+}
+
+/* A clear ring for people who move through the page with the keyboard. */
+a:focus-visible {
+  outline: 3px solid var(--color-deep);
+  outline-offset: 2px;
+}
+
+/* The tilted photos can poke past the screen edge; clip stops sideways scrolling. */
+main {
+  overflow-x: clip;
+}
+
+body {
+  color: var(--color-text);
+  font-family: var(--font-jp);
+  font-size: var(--fs-small);
+  font-weight: 500;
+  /* Breaks Japanese lines between phrases where the browser supports it. */
+  word-break: auto-phrase;
+  /* Two layers: the tint on top, the texture image underneath. */
+  background-color: #E2DCEC;
+  background-image:
+    linear-gradient(rgba(224, 215, 241, 0.5), rgba(224, 215, 241, 0.5)),
+    url("../assets/images/texture.webp");
+  background-size: auto, 1971px auto;
+}
+
+/* Centers content. min() picks the smaller value, so it never touches the screen edge. */
+.container {
+  width: min(100% - 48px, var(--content-width));
+  margin-inline: auto;
+}
+
+.section-title {
+  font-size: var(--fs-section);
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.section-title--primary { color: var(--color-primary); }
+.section-title--mid { color: var(--color-mid); }
+.section-title--sub { color: var(--color-subheading); }
+
+/* ==========================================================
+   Buttons
+   ========================================================== */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: var(--radius-panel);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.button--solid,
+.button--outline {
+  width: 156px;
+  height: 42px;
+  font-size: 14px;
+}
+
+.button--solid {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.button--outline {
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.button--small {
+  min-height: 28px;
+  padding: 5px 12px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-size: 11px;
+}
+
+.button--line {
+  display: flex;
+  width: 137px;
+  height: 31px;
+  margin: 48px auto 0;
+  border: 1px solid var(--color-accent);
+  color: var(--color-primary);
+  font-size: 14px;
+}
+
+.button--white {
+  min-height: 28px;
+  padding: 2px 10px;
+  background: var(--color-white);
+  color: var(--color-primary);
+  font-size: 13px;
+}
+
+/* ==========================================================
+   Header
+   ========================================================== */
+.site-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 45px;
+}
+
+.site-logo img {
+  width: 180px;
+  /* drop-shadow follows the logo's shape; box-shadow would draw a rectangle. */
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.site-nav {
+  display: flex;
+  gap: 13px;
+  margin-top: 12px;
+}
+
+.site-nav a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 154px;
+  height: 42px;
+  border-radius: var(--radius-nav);
+  background: var(--color-chip);
+  box-shadow: var(--shadow-card);
+  color: var(--color-deep);
+  font-size: 20px;
+  font-weight: 500;
+}
+
+/* ==========================================================
+   Hero
+   ========================================================== */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 606px;
+  margin-top: 72px;
+}
+
+.hero__text {
+  padding-top: 8px;
+}
+
+.hero__name {
+  color: var(--color-hero-name);
+  font-family: var(--font-en);
+  font-size: var(--fs-hero-name);
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.hero__role {
+  margin-top: 16px;
+  color: var(--color-heading-alt);
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.hero__intro {
+  margin-top: 20px;
+  line-height: 1.8;
+}
+
+.hero__intro p + p {
+  margin-top: 16px;
+}
+
+.hero__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-top: 28px;
+}
+
+/* The Figma icons sit inside 50px or 55px boxes, so the visible icon is smaller. */
+.social-icons li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-icons li:first-child {
+  width: 50px;
+}
+
+.social-icons--footer li:first-child {
+  width: 55px;
+}
+
+/* aspect-ratio keeps the box shape, so the layers stay in place at any size. */
+.hero__visual {
+  position: relative;
+  width: 100%;
+  max-width: 606px;
+  aspect-ratio: 606 / 581;
+  /* Lets .hero__tag size its text from this box (the cqw unit). */
+  container-type: inline-size;
+}
+
+.hero__layer {
+  position: absolute;
+}
+
+.hero__layer--back {
+  top: 42.3%;
+  left: 62.5%;
+  width: 37.9%;
+  transform: rotate(-0.55deg);
+}
+
+.hero__layer--chip {
+  top: 35%;
+  left: 5.2%;
+  width: 36.6%;
+  aspect-ratio: 221.66 / 360;
+  background: var(--color-chip);
+  transform: rotate(-10.73deg);
+}
+
+.hero__layer--photo {
+  top: 6.5%;
+  left: 16.9%;
+  width: 64.4%;
+  aspect-ratio: 390 / 537.4;
+  object-fit: cover;
+  transform: rotate(-3.4deg);
+}
+
+.hero__layer--tape {
+  top: 3.3%;
+  left: 65.6%;
+  width: 17.1%;
+  aspect-ratio: 103.81 / 27.75;
+  background: var(--color-line);
+  transform: rotate(23.09deg);
+}
+
+.hero__tag {
+  position: absolute;
+  top: 31.8%;
+  left: 75.4%;
+  width: 21.6%;
+  min-width: 92px;
+  aspect-ratio: 131 / 168;
+  padding: 2.6cqw 2cqw;
+  background: var(--color-white);
+  color: var(--color-mid);
+  font-size: clamp(12px, 2.97cqw, 18px);
+  line-height: 1.5;
+}
+
+.hero__tag p:first-child {
+  padding-bottom: 2.1cqw;
+  border-bottom: 1px solid var(--color-accent);
+  margin-bottom: 2.1cqw;
+}
+
+/* ==========================================================
+   できること
+   ========================================================== */
+.skills {
+  margin-top: var(--space-section);
+  padding: 32px 0 40px;
+  border-radius: 8px;
+  background: var(--color-white);
+  box-shadow: 0 4px 4px rgba(125, 112, 169, 0.43);
+}
+
+.skills__grid {
+  display: grid;
+  /* fr = a share of the free width. These shares match the Figma columns. */
+  grid-template-columns: 233fr 266fr 254fr 247fr;
+  margin-top: 32px;
+}
+
+.skill {
+  position: relative;
+  text-align: center;
+}
+
+/* Divider line between columns: every column except the first. */
+.skill + .skill::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  background: var(--color-line);
+}
+
+.skill__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: var(--color-page-tint);
+}
+
+.skill h3 {
+  margin-top: 16px;
+  color: var(--color-primary);
+  font-size: var(--fs-card-title);
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.skill p {
+  margin-top: 10px;
+  line-height: 1.7;
+}
+
+/* ==========================================================
+   使用ツール
+   ========================================================== */
+.tools {
+  margin-top: var(--space-section);
+}
+
+.tools .section-title {
+  line-height: 1.45;
+}
+
+.tools__band {
+  margin-top: 32px;
+  padding: 40px 24px 36px;
+  background: var(--color-band);
+  text-align: center;
+}
+
+.tools__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.tools__list li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 6px;
+  background: var(--color-white);
+  filter: drop-shadow(0 4px 2px rgba(0, 0, 0, 0.25));
+}
+
+.tools__caption {
+  margin-top: 32px;
+  color: var(--color-white);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+}
+
+/* ==========================================================
+   プロフィール
+   ========================================================== */
+.profile-card {
+  display: grid;
+  grid-template-columns: 340px 396px 1fr;
+  align-items: center;
+  margin-top: var(--space-section);
+  border-radius: 8px;
+  background: var(--color-white);
+  box-shadow: 0 4px 4px rgba(125, 112, 169, 0.48);
+}
+
+.profile-card__visual {
+  position: relative;
+  width: 270px;
+  max-width: 100%;
+  height: 290px;
+  margin: 24px 0 24px 30px;
+}
+
+.profile-card__layer {
+  position: absolute;
+}
+
+.profile-card__layer--chip {
+  top: 7%;
+  left: 24%;
+  width: 69.4%;
+  height: 89%;
+  background: var(--color-chip);
+  transform: rotate(8.06deg);
+}
+
+.profile-card__layer--photo {
+  top: 3.5%;
+  left: 10.9%;
+  width: 69.4%;
+  height: 89%;
+  object-fit: cover;
+  transform: rotate(-3.4deg);
+}
+
+.profile-card__layer--tape-a,
+.profile-card__layer--tape-b {
+  width: 24.5%;
+  height: 6.1%;
+  background: var(--color-line);
+  transform: rotate(-33.38deg);
+}
+
+.profile-card__layer--tape-a {
+  top: 5.7%;
+  left: -0.2%;
+}
+
+.profile-card__layer--tape-b {
+  top: 83%;
+  left: 67%;
+}
+
+.profile-card__main {
+  padding: 36px 12px 36px 0;
+}
+
+.profile-card__title,
+.profile-card__name {
+  font-size: var(--fs-section);
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.profile-card__title { color: var(--color-mid); }
+
+.profile-card__name {
+  margin-top: 4px;
+  color: var(--color-soft-purple);
+}
+
+.profile-card__text {
+  margin-top: 16px;
+  line-height: 1.8;
+}
+
+.profile-card__text p + p {
+  margin-top: 16px;
+}
+
+.profile-card__main .button--small {
+  margin-top: 20px;
+}
+
+.profile-card__info {
+  position: relative;
+  display: grid;
+  align-content: start;
+  align-self: stretch;
+  gap: 20px;
+  padding: 36px 0 36px 14px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* The vertical line beside the info column. */
+.profile-card__info::before {
+  content: "";
+  position: absolute;
+  top: 36px;
+  bottom: 36px;
+  left: 0;
+  width: 1px;
+  background: var(--color-line);
+}
+
+.profile-card__info dt {
+  display: flex;
+  align-items: center;
+  gap: 27px;
+  color: var(--color-primary);
+  font-size: 16px;
+}
+
+/* Fixed icon box, so the labels line up even though the icons differ in size. */
+.profile-card__info dt img {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.profile-card__info dd {
+  padding-left: 49px;
+}
+
+/* ==========================================================
+   デザインへの考え方
+   ========================================================== */
+.thinking {
+  margin-top: var(--space-section);
+}
+
+.thinking .section-title {
+  line-height: 1.2;
+}
+
+.thinking__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.thinking-card {
+  position: relative;
+  /* overflow: hidden cuts the corner shape to the card's rounded edge. */
+  overflow: hidden;
+  min-height: 320px;
+  padding: 48px 20px 56px;
+  border-radius: 15px;
+  background: var(--color-white);
+  box-shadow: var(--shadow-card);
+  text-align: center;
+}
+
+.thinking-card h3 {
+  position: relative;
+  z-index: 1;
+  padding-bottom: 14px;
+  color: var(--color-primary);
+  font-size: var(--fs-card-title);
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+/* Short line under the title, drawn with CSS. */
+.thinking-card h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 160px;
+  height: 2px;
+  background: var(--color-line);
+  transform: translateX(-50%);
+}
+
+.thinking-card p {
+  position: relative;
+  z-index: 1;
+  margin-top: 20px;
+  line-height: 1.8;
+}
+
+.thinking-card__corner {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+/* In Figma, these two shapes run past the card edge and get cut off. */
+.thinking-card__corner--b {
+  right: -7px;
+  bottom: -9px;
+}
+
+.thinking-card__corner--c {
+  right: -10px;
+  bottom: -9px;
+}
+
+/* ==========================================================
+   主な作品
+   ========================================================== */
+.works {
+  margin-top: var(--space-section);
+}
+
+.works .section-title {
+  line-height: 1.2;
+}
+
+.works__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.work-card {
+  position: relative;
+  display: block;
+  min-height: 427px;
+  background: var(--color-white);
+}
+
+.work-card__image {
+  width: 100%;
+  aspect-ratio: 305 / 183;
+  object-fit: cover;
+}
+
+.work-card__body {
+  padding: 18px 16px 32px 30px;
+}
+
+.work-card__head {
+  display: flex;
+  gap: 4px;
+}
+
+.work-card__number {
+  flex: none;
+  width: 62px;
+  color: var(--color-subheading);
+  font-family: var(--font-en);
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.work-card__label {
+  margin-top: 6px;
+  color: var(--color-mid);
+  font-family: var(--font-en);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.work-card__title {
+  color: var(--color-deep);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.work-card__text {
+  margin-top: 14px;
+  letter-spacing: -0.32px;
+  line-height: 1.8;
+}
+
+.work-card__tools-title {
+  position: relative;
+  margin-top: 16px;
+  padding-top: 14px;
+  color: var(--color-mid);
+  line-height: 1.2;
+}
+
+/* The line above 使用ツール. */
+.work-card__tools-title::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 238px;
+  max-width: 100%;
+  height: 1px;
+  background: var(--color-line);
+}
+
+.work-card__tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.work-card__tools li {
+  padding: 0 4px;
+  border-radius: var(--radius-chip);
+  background: var(--color-chip);
+  color: var(--color-primary);
+  font-weight: 400;
+  letter-spacing: -0.32px;
+  line-height: 24px;
+}
+
+/* In Figma the corner and round button hang 6px below the card. */
+.work-card__corner {
+  position: absolute;
+  right: 0;
+  bottom: -6px;
+}
+
+.work-card__arrow {
+  position: absolute;
+  right: 2px;
+  bottom: -6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 4px 2px rgba(0, 0, 0, 0.13);
+}
+
+/* ==========================================================
+   Footer
+   ========================================================== */
+.site-footer {
+  margin-top: var(--space-section);
+  background: var(--color-band);
+  color: var(--color-white);
+}
+
+.site-footer__top {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 40px 0 32px;
+}
+
+.site-footer__message {
+  font-weight: 400;
+}
+
+.site-footer__title {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.48px;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.site-footer__message > p:not(.site-footer__title) {
+  line-height: 1.7;
+}
+
+.site-footer__message .button {
+  margin-top: 16px;
+}
+
+.site-footer__social {
+  width: 384px;
+  padding: 8px 0 0 7px;
+  font-family: var(--font-en);
+}
+
+.social-icons--footer {
+  margin-top: 12px;
+  margin-left: -7px;
+}
+
+.site-footer__bar {
+  background: var(--color-deep);
+}
+
+.site-footer__bar-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 24px;
+  padding-block: 8px;
+  font-weight: 400;
+  letter-spacing: -0.32px;
+}
+
+.site-footer__credit {
+  font-size: 12px;
+  text-decoration: underline;
+}
+
+.site-footer__nav {
+  display: flex;
+  gap: 12px;
+  margin-left: auto;
+}
+
+/* ==========================================================
+   Tablet: 1023px wide and below
+   A media query applies these rules only on smaller screens.
+   ========================================================== */
+@media (max-width: 1023px) {
+  :root {
+    --space-section: 80px;
+  }
+
+  .site-header {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 24px;
+  }
+
+  .site-nav {
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .site-nav a {
+    flex: 1;
+    width: auto;
+    font-size: 16px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .hero__buttons {
+    padding-left: 0;
+  }
+
+  .hero__visual {
+    align-self: center;
+  }
+
+  .skills__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 0;
+  }
+
+  /* In two columns, only the right-hand column keeps the line. */
+  .skill:nth-child(odd)::before {
+    display: none;
+  }
+
+  .skill::before {
+    top: 0 !important;
+    bottom: 0 !important;
+  }
+
+  .profile-card {
+    grid-template-columns: 300px 1fr;
+  }
+
+  .profile-card__main {
+    padding-right: 24px;
+  }
+
+  .profile-card__info {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 16px 24px 24px;
+    border-top: 1px solid var(--color-line);
+  }
+
+  .profile-card__info::before {
+    display: none;
+  }
+
+  .thinking__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .works__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .site-footer__social {
+    width: auto;
+  }
+}
+
+/* ==========================================================
+   Mobile: 600px wide and below
+   ========================================================== */
+@media (max-width: 600px) {
+  :root {
+    --space-section: 64px;
+  }
+
+  /* Two rows of two buttons. */
+  .site-nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .hero__name {
+    font-size: 48px;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+
+  .skills__grid,
+  .thinking__grid,
+  .works__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* One column: lines go between rows instead of between columns. */
+  .skill {
+    padding: 16px 8px;
+  }
+
+  .skill + .skill::before {
+    display: none;
+  }
+
+  .skill + .skill {
+    border-top: 1px solid var(--color-line);
+  }
+
+  .tools__list {
+    gap: 12px;
+  }
+
+  .tools__list li {
+    width: 84px;
+    height: 84px;
+  }
+
+  .tools__list img {
+    width: 66%;
+  }
+
+  .tools__caption {
+    font-size: var(--fs-small);
+  }
+
+  .profile-card {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-card__visual {
+    margin: 16px auto 0;
+  }
+
+  .profile-card__main {
+    padding: 16px 24px;
+  }
+
+  .profile-card__title,
+  .profile-card__name {
+    font-size: 28px;
+  }
+
+  .profile-card__text br {
+    display: none;
+  }
+
+  .profile-card__info {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .thinking-card {
+    min-height: 280px;
+    padding-top: 40px;
+  }
+
+  .work-card {
+    min-height: 0;
+    margin-bottom: 6px;
+  }
+
+  .work-card__tools-title::before {
+    width: 100%;
+  }
+
+  .site-footer__top {
+    flex-direction: column;
+  }
+
+  .site-footer__title {
+    font-size: 20px;
+  }
+
+  .social-icons {
+    gap: 20px;
+  }
+
+  .site-footer__nav {
+    flex-wrap: wrap;
+    margin-left: 0;
+    gap: 6px;
+    font-size: 14px;
+  }
+
+  .site-footer__message .button {
+    margin-top: 10px;
+  }
+
+  .profile-card__main .button--small {
+    margin-top: 10px;
+  }
+}
