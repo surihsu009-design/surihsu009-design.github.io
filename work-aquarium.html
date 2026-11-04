@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>水族館Webサイト | HSU YAMIN HTIKE</title>
+  <meta name="description" content="神戸北野水族館の魅力を伝えるWebサイトをデザインしました。">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Noto+Sans+JP:wght@300..700&family=Noto+Serif+JP:wght@600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== Header: the same block as on the Home page ===== -->
+  <header class="site-header container">
+    <a class="site-logo" href="index.html">
+      <img src="assets/images/logo.webp" alt="HYH" width="180" height="66">
+    </a>
+    <nav class="site-nav" aria-label="メインメニュー">
+      <a href="index.html">ホーム</a>
+      <a href="profile.html">プロフィール</a>
+      <a href="works.html">作品</a>
+      <a href="contact.html">お問い合わせ</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===== Title, details and monitor ===== -->
+    <section class="work-hero container">
+      <div class="work-hero__text">
+        <p class="work-eyebrow">WEB DESIGN</p>
+        <h1 class="work-title">水族館Webサイト</h1>
+        <p class="work-lead">神戸北野水族館の魅力を伝える<br>Webサイトをデザインしました。<br>海の世界観と情報の見やすさを意識しました。</p>
+        <dl class="work-meta">
+          <div class="work-meta__row">
+            <dt>使用ソフト</dt><span aria-hidden="true">ー</span>
+            <dd><ul class="work-meta__chips"><li>Figma</li><li>Photoshop</li></ul></dd>
+          </div>
+          <div class="work-meta__row">
+            <dt>制作期間</dt><span aria-hidden="true">ー</span>
+            <dd>2026 .7. 5 - 2026 . 7. 12</dd>
+          </div>
+          <div class="work-meta__row">
+            <dt>担当</dt><span aria-hidden="true">ー</span>
+            <dd>デザイン / レイアウト / 画像加工</dd>
+          </div>
+          <div class="work-meta__row">
+            <dt>ジャンル</dt><span aria-hidden="true">ー</span>
+            <dd>Webサイト（施設・イベント）</dd>
+          </div>
+        </dl>
+      </div>
+      <!-- Hover: the whole site slowly scrolls inside the monitor screen (CSS only). -->
+      <div class="monitor">
+        <img class="monitor__circle" src="assets/icons/aquarium-circle.svg" alt="" width="429" height="429">
+        <img class="monitor__body" src="assets/images/aquarium-monitor.webp" alt="" width="1142" height="761">
+        <div class="monitor__bezel"></div>
+        <img class="monitor__screen" src="assets/images/aquarium-fullpage.webp" alt="水族館Webサイトのトップページ" width="1400" height="5286">
+      </div>
+    </section>
+
+    <!-- ===== 制作概要 ===== -->
+    <section class="work-overview container">
+      <h2 class="work-overview__title">制作概要</h2>
+      <p class="work-overview__text">神戸北野水族館の魅力や最新情報を、訪問者に分かりやすく伝えることを目的に制作しました。<br>直感的に情報を探せるビジュアルと、海の世界観を感じられるWebサイトを目指しました。</p>
+    </section>
+
+    <!-- ===== サイト構成 ===== -->
+    <section class="site-map container">
+      <h2 class="section-title section-title--primary">サイト構成</h2>
+
+      <!-- A small browser window. The real full page scrolls inside it,
+           and the numbers in the bottom bar jump to each part of the page. -->
+      <div class="browser">
+        <div class="browser__bar">
+          <span class="browser__dot browser__dot--red"></span>
+          <span class="browser__dot browser__dot--yellow"></span>
+          <span class="browser__dot browser__dot--green"></span>
+          <span class="browser__url">kobeaquarium.jp</span>
+        </div>
+        <div class="browser__view" tabindex="0" role="region" aria-label="水族館Webサイト">
+          <div class="browser__page">
+            <img src="assets/images/aquarium-fullpage.webp" alt="水族館Webサイトのページ全体" width="1400" height="5286" loading="lazy">
+            <span class="browser__mark" id="site-01" style="top: 0%"></span>
+            <span class="browser__mark" id="site-02" style="top: 14.74%"></span>
+            <span class="browser__mark" id="site-03" style="top: 26.94%"></span>
+            <span class="browser__mark" id="site-04" style="top: 40.82%"></span>
+            <span class="browser__mark" id="site-05" style="top: 52.46%"></span>
+            <span class="browser__mark" id="site-06" style="top: 64.2%"></span>
+            <span class="browser__mark" id="site-07" style="top: 80.77%"></span>
+          </div>
+        </div>
+        <nav class="browser__nav" aria-label="サイト構成">
+          <a href="#site-01" aria-label="メインビジュアル">01</a>
+          <a href="#site-02" aria-label="イベント・ニュース">02</a>
+          <a href="#site-03" aria-label="体験情報">03</a>
+          <a href="#site-04" aria-label="チケット情報">04</a>
+          <a href="#site-05" aria-label="営業時間">05</a>
+          <a href="#site-06" aria-label="施設案内">06</a>
+          <a href="#site-07" aria-label="アクセス情報">07</a>
+        </nav>
+      </div>
+
+      <ol class="site-rows">
+      <li class="site-row">
+        <div class="site-row__info">
+          <span class="site-row__number">01</span>
+          <div>
+            <h3 class="site-row__title">メインビジュアル</h3>
+            <p class="site-row__text">水族館の魅力が一目で伝わるよう、<br>海の写真を大きく使用し、印象的なファーストビューにしました。</p>
+          </div>
+        </div>
+      </li>
+      <li class="site-row site-row--image-left">
+        <div class="site-row__info">
+          <span class="site-row__number">02</span>
+          <div>
+            <h3 class="site-row__title">イベント・ニュース</h3>
+            <p class="site-row__text">イベントや最新ニュースを<br>カード形式でまとめ、<br>目的の情報を見つけやすくしました。</p>
+          </div>
+        </div>
+        <img class="site-row__image" src="assets/images/aquarium-section-02.webp" alt="イベント・ニュースの画面" width="508" height="225" loading="lazy">
+      </li>
+      <li class="site-row">
+        <div class="site-row__info">
+          <span class="site-row__number">03</span>
+          <div>
+            <h3 class="site-row__title">体験情報</h3>
+            <p class="site-row__text">イルカ・ペンギン・シャチなどの<br>写真を使い、各ショーの魅力が<br>直感的に伝わるデザインにしました。</p>
+          </div>
+        </div>
+        <img class="site-row__image" src="assets/images/aquarium-section-03.webp" alt="体験情報の画面" width="527" height="248" loading="lazy">
+      </li>
+      <li class="site-row site-row--image-left">
+        <div class="site-row__info">
+          <span class="site-row__number">04</span>
+          <div>
+            <h3 class="site-row__title">チケット情報</h3>
+            <p class="site-row__text">入館料や年間パスポートの情報を表に<br>整理し、料金を比較しやすくしました。</p>
+          </div>
+        </div>
+        <img class="site-row__image" src="assets/images/aquarium-section-04.webp" alt="チケット情報の画面" width="478" height="215" loading="lazy">
+      </li>
+      <li class="site-row">
+        <div class="site-row__info">
+          <span class="site-row__number">05</span>
+          <div>
+            <h3 class="site-row__title">営業時間</h3>
+            <p class="site-row__text">営業時間や休館日、混雑状況をまとめ、<br>来館前に必要な情報を確認できるように<br>しました。</p>
+          </div>
+        </div>
+        <img class="site-row__image" src="assets/images/aquarium-section-05.webp" alt="営業時間の画面" width="456" height="250" loading="lazy">
+      </li>
+      <li class="site-row site-row--image-left">
+        <div class="site-row__info">
+          <span class="site-row__number">06</span>
+          <div>
+            <h3 class="site-row__title">施設案内</h3>
+            <p class="site-row__text">館内マップとエリア情報を組み合わせ、<br>初めて訪れる人でも施設の位置関係が<br>分かるようにしました。</p>
+          </div>
+        </div>
+        <img class="site-row__image" src="assets/images/aquarium-section-06.webp" alt="施設案内の画面" width="427" height="251" loading="lazy">
+      </li>
+      <li class="site-row">
+        <div class="site-row__info">
+          <span class="site-row__number">07</span>
+          <div>
+            <h3 class="site-row__title">アクセス情報</h3>
+            <p class="site-row__text">住所・交通アクセス・<br>周辺情報を整理し、<br>水族館までの行き方を<br>確認しやすくしました。</p>
+          </div>
+        </div>
+        <img class="site-row__image" src="assets/images/aquarium-section-07.webp" alt="アクセス情報の画面" width="546" height="251" loading="lazy">
+      </li>
+      </ol>
+    </section>
+
+    <!-- ===== ターゲット / 学んだこと ===== -->
+    <section class="work-notes container">
+      <h2 class="section-title section-title--primary section-title--left">ターゲット / 学んだこと</h2>
+      <div class="work-notes__grid">
+        <div class="work-note">
+          <img src="assets/icons/work-people.svg" alt="" width="44" height="27" loading="lazy">
+          <p>・水族館や海の生き物が好きな方<br>・家族連れ、カップル、観光客<br>・イベントやチケット情報を探している方</p>
+        </div>
+        <div class="work-note work-note--strong">
+          <img src="assets/icons/work-note.svg" alt="" width="44" height="34" loading="lazy">
+          <p>ユーザー目線で情報を整理することの重要性を学びました。<br>情報の優先順位や配置を工夫することで、<br>見やすく使いやすいWebサイトを作ることができました。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 主な作品: the same block as on the Home page ===== -->
+    <section class="works container">
+      <h2 class="section-title section-title--sub">主な作品</h2>
+      <div class="works__grid">
+        <a class="work-card" href="work-aquarium.html">
+          <img class="work-card__image" src="assets/images/work-card-aquarium.webp" alt="水族館Webサイト" width="640" height="351" loading="lazy">
+          <div class="work-card__body">
+            <div class="work-card__head">
+              <span class="work-card__number">01</span>
+              <div>
+                <p class="work-card__label">Web Design</p>
+                <h3 class="work-card__title">水族館Webサイト</h3>
+              </div>
+            </div>
+            <p class="work-card__text">海の世界をテーマにし、<br>楽しく回遊できる構成を<br>意識してデザインしました。</p>
+            <p class="work-card__tools-title">使用ツール</p>
+            <ul class="work-card__tools"><li>Figma</li><li>Photoshop</li></ul>
+          </div>
+          <img class="work-card__corner" src="assets/icons/card-corner.svg" alt="" width="66" height="56" loading="lazy">
+          <span class="work-card__arrow"><img src="assets/icons/card-arrow.svg" alt="" width="16" height="14" loading="lazy"></span>
+        </a>
+
+        <a class="work-card" href="work-school-banner.html">
+          <img class="work-card__image" src="assets/images/work-card-banner.webp" alt="学校説明会バナー" width="640" height="535" loading="lazy">
+          <div class="work-card__body">
+            <div class="work-card__head">
+              <span class="work-card__number">02</span>
+              <div>
+                <p class="work-card__label">Graphic Design</p>
+                <h3 class="work-card__title">学校説明会バナー</h3>
+              </div>
+            </div>
+            <p class="work-card__text">情報を整理し、写真と<br>タイポグラフィで<br>伝わるデザインにしました。</p>
+            <p class="work-card__tools-title">使用ツール</p>
+            <ul class="work-card__tools"><li>Illustrator</li><li>Photoshop</li></ul>
+          </div>
+          <img class="work-card__corner" src="assets/icons/card-corner.svg" alt="" width="66" height="56" loading="lazy">
+          <span class="work-card__arrow"><img src="assets/icons/card-arrow.svg" alt="" width="16" height="14" loading="lazy"></span>
+        </a>
+
+        <a class="work-card" href="work-bibimbap.html">
+          <img class="work-card__image" src="assets/images/work-card-bibimbap.webp" alt="ビビンバ レシピ動画" width="640" height="360" loading="lazy">
+          <div class="work-card__body">
+            <div class="work-card__head">
+              <span class="work-card__number">03</span>
+              <div>
+                <p class="work-card__label">Video / Visual</p>
+                <h3 class="work-card__title">ビビンバ レシピ動画</h3>
+              </div>
+            </div>
+            <p class="work-card__text">写真・文字・動きを組み合わせ、<br>楽しく分かりやすく伝わる映像を<br>制作しました。</p>
+            <p class="work-card__tools-title">使用ツール</p>
+            <ul class="work-card__tools"><li>Illustrator</li><li>Photoshop</li></ul>
+          </div>
+          <img class="work-card__corner" src="assets/icons/card-corner.svg" alt="" width="66" height="56" loading="lazy">
+          <span class="work-card__arrow"><img src="assets/icons/card-arrow.svg" alt="" width="16" height="14" loading="lazy"></span>
+        </a>
+      </div>
+      <a class="button button--line" href="works.html">作品一覧を見る →</a>
+    </section>
+
+  </main>
+
+  <!-- ===== Footer: the same block as on the Home page ===== -->
+  <footer class="site-footer">
+    <div class="site-footer__top container">
+      <div class="site-footer__message">
+        <p class="site-footer__title">一緒に、価値のあるデザインを作りましょう！</p>
+        <p>Webデザインを中心に、<br>伝わりやすく使いやすいデザインを大切にしています。</p>
+        <a class="button button--white" href="contact.html">お問い合わせ →</a>
+      </div>
+      <div class="site-footer__social">
+        <p>Social / Contact</p>
+        <ul class="social-icons social-icons--footer">
+          <li><img src="assets/icons/footer-instagram.svg" alt="Instagram" width="41" height="41"></li>
+          <li><img src="assets/icons/footer-mail.svg" alt="メール" width="41" height="38"></li>
+          <li><img src="assets/icons/footer-line.svg" alt="LINE" width="50" height="50"></li>
+          <li><img src="assets/icons/footer-facebook.svg" alt="Facebook" width="43" height="43"></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__bar">
+      <div class="site-footer__bar-inner container">
+        <p>© 2026 HSU YAMIN HTIKE. All Rights Reserved.</p>
+        <a class="site-footer__credit" href="https://icons8.com" target="_blank" rel="noopener">Icons by Icons8</a>
+        <nav class="site-footer__nav" aria-label="フッターメニュー">
+          <a href="index.html">ホーム</a>
+          <span aria-hidden="true">｜</span>
+          <a href="profile.html">プロフィール</a>
+          <span aria-hidden="true">｜</span>
+          <a href="works.html">作品</a>
+          <span aria-hidden="true">｜</span>
+          <a href="contact.html">お問い合わせ</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1673,6 +1673,384 @@ body {
 }
 
 /* ==========================================================
+   Work detail pages (shared by the five project pages)
+   ========================================================== */
+.work-hero {
+  display: grid;
+  grid-template-columns: 1fr 517px;
+  margin-top: 72px;
+}
+
+.work-eyebrow {
+  color: var(--color-mid);
+  font-size: var(--fs-card-title);
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.work-title {
+  color: var(--color-deep);
+  font-size: var(--fs-work-title);
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.work-lead {
+  margin-top: 20px;
+  font-size: var(--fs-body);
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.work-meta {
+  display: grid;
+  gap: 14px;
+  margin-top: 28px;
+  color: var(--color-primary);
+  font-size: var(--fs-body);
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+/* Three columns: label, the ー mark, value. */
+.work-meta__row {
+  display: grid;
+  grid-template-columns: 100px 20px 1fr;
+  gap: 14px;
+  align-items: center;
+}
+
+.work-meta__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.work-meta__chips li {
+  min-width: 100px;
+  padding: 2px 8px;
+  border-radius: var(--radius-chip);
+  background: var(--color-white);
+  font-size: var(--fs-small);
+  text-align: center;
+}
+
+.work-overview {
+  margin-top: 56px;
+  padding: 32px 29px;
+  border-radius: var(--radius-card);
+  background: var(--color-white);
+  box-shadow: var(--shadow-card);
+}
+
+.work-overview__title {
+  color: var(--color-primary);
+  font-size: var(--fs-section);
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.work-overview__text {
+  margin-top: 12px;
+  color: var(--color-deep);
+  font-size: var(--fs-body);
+  line-height: 1.7;
+}
+
+.work-notes {
+  margin-top: var(--space-section);
+}
+
+.work-notes__grid {
+  display: grid;
+  grid-template-columns: 392fr 526fr;
+  gap: 37px;
+  margin-top: 32px;
+}
+
+.work-note {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 28px 16px;
+  border-radius: var(--radius-panel);
+  background: rgba(179, 158, 209, 0.4);
+  box-shadow: var(--shadow-panel);
+  /* backdrop-filter blurs what is behind the panel, here the page texture. */
+  backdrop-filter: blur(2px);
+  line-height: 1.7;
+}
+
+.work-note--strong {
+  background: rgba(179, 158, 209, 0.5);
+}
+
+.work-note img {
+  flex: none;
+  width: 44px;
+}
+
+.work-note p {
+  padding-left: 12px;
+  border-left: 2px solid var(--color-accent);
+}
+
+/* ==========================================================
+   水族館Webサイト page
+   ========================================================== */
+
+/* Wider than its column: the monitor image has an empty left edge. */
+.monitor {
+  position: relative;
+  width: 571px;
+  margin-left: -54px;
+  aspect-ratio: 571 / 434;
+}
+
+.monitor > * {
+  position: absolute;
+}
+
+.monitor__circle {
+  top: -1%;
+  left: 24%;
+  width: 75%;
+}
+
+.monitor__body {
+  top: 12.2%;
+  left: 0;
+  width: 100%;
+}
+
+.monitor__bezel {
+  top: 16.4%;
+  left: 9.46%;
+  width: 81.4%;
+  height: 67.5%;
+  border-radius: 15px;
+  background: #3F3E3E;
+}
+
+/* The tall page image shows through a small window: object-fit: cover
+   fills the box and object-position chooses which part is visible. */
+.monitor__screen {
+  top: 19.8%;
+  left: 12.26%;
+  width: 75.5%;
+  height: 62.4%;
+  object-fit: cover;
+  object-position: top;
+  transition: object-position 1.2s ease;
+}
+
+/* Hover moves the window from the top of the page to the bottom. */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .monitor:hover .monitor__screen {
+    object-position: bottom;
+    transition: object-position 14s linear;
+  }
+}
+
+.site-map {
+  margin-top: var(--space-section);
+}
+
+.browser {
+  overflow: hidden;
+  margin-top: 32px;
+  border-radius: 15px;
+  background: #000000;
+  box-shadow: var(--shadow-card);
+}
+
+.browser__bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 44px;
+  padding-left: 13px;
+  background: rgba(36, 29, 23, 0.82);
+}
+
+.browser__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.browser__dot--red { background: #FF5F56; }
+.browser__dot--yellow { background: #FFBD2E; }
+.browser__dot--green { background: #27C93F; }
+
+.browser__url {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(248px, 50%);
+  border-radius: 12px;
+  background: rgba(10, 9, 8, 0.87);
+  color: rgba(255, 255, 255, 0.86);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+/* overflow-y: auto makes this box scroll on its own, separate from the page. */
+.browser__view {
+  aspect-ratio: 993 / 498;
+  overflow-y: auto;
+  background: #0B1A33;
+  scrollbar-color: var(--color-accent) #0B1A33;
+  scrollbar-width: thin;
+}
+
+.browser__view:focus-visible {
+  outline: 3px solid var(--color-line);
+  outline-offset: -3px;
+}
+
+.browser__page {
+  position: relative;
+}
+
+.browser__page img {
+  width: 100%;
+}
+
+/* Invisible markers at the top of each part of the page, for the links to land on. */
+.browser__mark {
+  position: absolute;
+}
+
+.browser__nav {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  padding: 6px 8px;
+  background: rgba(23, 19, 16, 0.88);
+}
+
+.browser__nav a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 24px;
+  border-radius: var(--radius-chip);
+  color: var(--color-white);
+  font-family: var(--font-en);
+  font-size: 13px;
+}
+
+/* Inside the dark bar, the normal dark ring would not show. */
+.browser__nav a:focus-visible {
+  outline-color: var(--color-white);
+  outline-offset: 0;
+}
+
+/* Smooth jumps, except for people who asked their device for less motion. */
+@media (prefers-reduced-motion: no-preference) {
+  html:has(.browser) {
+    scroll-behavior: smooth;
+  }
+
+  .browser__view {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (hover: hover) {
+  .browser__nav a:hover {
+    background: var(--color-accent);
+    opacity: 1;
+  }
+}
+
+.site-rows {
+  display: grid;
+  gap: 72px;
+  margin: 72px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* order: -1 moves the image before the text, without changing the HTML order. */
+.site-row--image-left .site-row__image {
+  order: -1;
+}
+
+/* flex: none keeps the text at full width; the image gives way instead. */
+.site-row__info {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 14px;
+}
+
+.site-row__number {
+  flex: none;
+  width: 112px;
+  color: var(--color-subheading);
+  font-family: var(--font-number);
+  font-size: 100px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.site-row__title {
+  color: var(--color-primary);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.site-row__text {
+  margin-top: 12px;
+  font-size: var(--fs-body);
+  font-weight: 400;
+  line-height: 1.7;
+  /* Keeps the Figma line breaks on wide screens. */
+  white-space: nowrap;
+}
+
+.site-row__image {
+  min-width: 0;
+  border-radius: var(--radius-panel);
+  box-shadow: var(--shadow-panel);
+}
+
+/* Each row rises into place as it scrolls into view, with no JavaScript.
+   Browsers without this feature skip it and simply show the row. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .site-row {
+      animation: rise-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 60%;
+    }
+
+    @keyframes rise-in {
+      from {
+        opacity: 0;
+        transform: translateY(48px);
+      }
+    }
+  }
+}
+
+/* ==========================================================
    Tablet: 1023px wide and below
    A media query applies these rules only on smaller screens.
    ========================================================== */
@@ -1832,6 +2210,39 @@ body {
 
   .contact-side {
     gap: 32px;
+  }
+
+  .work-hero {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-top: 40px;
+  }
+
+  .monitor {
+    width: min(100%, 571px);
+    margin-inline: auto;
+  }
+
+  /* Stacked rows: text first, then the image, at every number. */
+  .site-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .site-row--image-left .site-row__image {
+    order: 0;
+  }
+
+  .site-row__image {
+    width: 100%;
+  }
+
+  .site-row__info {
+    flex: initial;
+  }
+
+  .site-row__text {
+    white-space: normal;
   }
 }
 
@@ -2143,5 +2554,81 @@ body {
   .faq__list li {
     padding: 10px 16px;
     font-size: 18px;
+  }
+
+  .work-title {
+    font-size: 34px;
+  }
+
+  .work-lead,
+  .work-overview__text,
+  .site-row__text {
+    font-size: var(--fs-small);
+  }
+
+  /* On a phone the label sits above its value and the ー mark is hidden. */
+  .work-meta {
+    font-size: 18px;
+  }
+
+  .work-meta__row {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .work-meta__row > span {
+    display: none;
+  }
+
+  .work-overview {
+    padding: 28px 20px;
+  }
+
+  .work-overview__title {
+    font-size: 28px;
+  }
+
+  .work-overview__text br,
+  .work-note--strong br,
+  .site-row__text br {
+    display: none;
+  }
+
+  .work-notes__grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  /* A taller window, so there is room to scroll on a small screen. */
+  .browser__view {
+    aspect-ratio: 4 / 3;
+  }
+
+  .browser__nav {
+    gap: 0;
+    padding-inline: 4px;
+  }
+
+  .browser__nav a {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .site-rows {
+    gap: 56px;
+    margin-top: 56px;
+  }
+
+  .site-row__info {
+    gap: 12px;
+  }
+
+  .site-row__number {
+    width: 72px;
+    font-size: 56px;
+  }
+
+  .site-row__title {
+    font-size: 24px;
   }
 }
