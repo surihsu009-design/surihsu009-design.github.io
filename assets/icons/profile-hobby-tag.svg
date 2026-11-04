@@ -1,0 +1,9 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="22" height="38.5" viewBox="0 0 22 38.5" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Rectangle 2587">
+<path d="M0 0H22V32L11 38.5L0 32V0Z" fill="#7158B3"/>
+<mask id="stroke0_0_26" fill="white">
+<path d="M0 0H22V32L11 38.5L0 32V0Z"/>
+</mask>
+<path d="M0 0H22V32L11 38.5L0 32V0Z" stroke-width="2" stroke="#432C7C" mask="url(#stroke0_0_26)"/>
+</g>
+</svg>

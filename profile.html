@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>プロフィール | HSU YAMIN HTIKE</title>
+  <meta name="description" content="ミャンマー出身。神戸電子専門学校でデザインを学んでいます。">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Noto+Sans+JP:wght@300..700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== Header: the same block as on the Home page ===== -->
+  <header class="site-header container">
+    <a class="site-logo" href="index.html">
+      <img src="assets/images/logo.webp" alt="HYH" width="180" height="66">
+    </a>
+    <nav class="site-nav" aria-label="メインメニュー">
+      <a href="index.html">ホーム</a>
+      <a href="profile.html" aria-current="page">プロフィール</a>
+      <a href="works.html">作品</a>
+      <a href="contact.html">お問い合わせ</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===== Page title, basic information and photo ===== -->
+    <section class="profile-top container">
+      <div class="profile-top__text">
+        <h1 class="page-title">プロフィール</h1>
+        <dl class="basic-info">
+          <div class="basic-info__row">
+            <img src="assets/images/profile-circle-name.webp" alt="" width="62" height="62">
+            <div>
+              <dt>NAME</dt>
+              <dd class="basic-info__name">ス　ヤミン　タイ</dd>
+            </div>
+          </div>
+          <div class="basic-info__row">
+            <img src="assets/images/profile-circle-school.webp" alt="" width="62" height="62">
+            <div>
+              <dt>SCHOOL</dt>
+              <dd>神戸電子専門学校</dd>
+            </div>
+          </div>
+          <div class="basic-info__row">
+            <img src="assets/images/profile-circle-department.webp" alt="" width="62" height="62">
+            <div>
+              <dt>DEPARTMENT</dt>
+              <dd>グラフィックデザイン学科</dd>
+            </div>
+          </div>
+          <div class="basic-info__row">
+            <img src="assets/images/profile-circle-from.webp" alt="" width="62" height="62">
+            <div>
+              <dt>FROM</dt>
+              <dd>ミャンマー</dd>
+            </div>
+          </div>
+        </dl>
+      </div>
+      <div class="profile-top__visual">
+        <img class="profile-top__back" src="assets/icons/profile-photo-bg.svg" alt="" width="360" height="490">
+        <img class="profile-top__photo" src="assets/images/profile-hero.webp" alt="ス　ヤミン　タイ" width="720" height="900">
+      </div>
+    </section>
+
+    <!-- ===== 私について ===== -->
+    <section class="about container">
+      <div class="about__visual">
+        <img class="about__photo" src="assets/images/profile-about.webp" alt="" width="568" height="626" loading="lazy">
+        <div class="about__tape"></div>
+      </div>
+      <div class="about__text">
+        <h2 class="section-title section-title--primary">私について</h2>
+        <p>母国の大学で約4年間、IT Engineeringを学ぶ中で、<br>WebプログラミングやWebデザインに興味を持つようになりました。</p>
+        <p>その後、母国の社会情勢の変化により大学での学びを続けることが難しくなりました。しかし、Webに関わる仕事をしたいという思いは変わらず、もう一度学び直し、自分の夢に挑戦することを決めました。</p>
+        <p>2024年に日本へ渡り、日本語学校で約2年間、日本語を学びました。</p>
+        <p>そして2026年4月、神戸電子専門学校に入学しました。<br>現在は、グラフィックデザイン、Webデザイン、動画編集など、幅広い分野を学んでいます。</p>
+        <p>これまでの経験を活かしながら、Webデザインとコーディングの両方を身につけ、将来はWebデザイナー、フロントエンドエンジニアとして、デザインと技術の両方から価値を生み出せる人を目指しています。</p>
+      </div>
+    </section>
+
+    <!-- ===== スキル and the four work steps ===== -->
+    <section class="skills-plan container">
+      <div class="skill-bars">
+        <h2 class="skill-bars__title">スキル</h2>
+        <!-- style="--value: 70%" passes this bar's width to the CSS below. -->
+        <div class="skill-bar" style="--value: 70%">
+          <div class="skill-bar__head"><span>Web Design</span><span class="skill-bar__percent">70%</span></div>
+          <div class="skill-bar__track"></div>
+        </div>
+        <div class="skill-bar" style="--value: 60%">
+          <div class="skill-bar__head"><span>Graphic Design</span><span class="skill-bar__percent">60%</span></div>
+          <div class="skill-bar__track"></div>
+        </div>
+        <div class="skill-bar" style="--value: 55%">
+          <div class="skill-bar__head"><span>Video Editing</span><span class="skill-bar__percent">55%</span></div>
+          <div class="skill-bar__track"></div>
+        </div>
+        <div class="skill-bar" style="--value: 75%">
+          <div class="skill-bar__head"><span>Programming</span><span class="skill-bar__percent">75%</span></div>
+          <div class="skill-bar__track"></div>
+        </div>
+        <div class="skill-bar" style="--value: 60%">
+          <div class="skill-bar__head"><span>UI / UX Design</span><span class="skill-bar__percent">60%</span></div>
+          <div class="skill-bar__track"></div>
+        </div>
+      </div>
+      <ul class="plan-grid">
+        <li class="plan-card"><span class="plan-card__number">01</span><span class="plan-card__word">Plan</span><span class="plan-card__text">アイデアを考える</span></li>
+        <li class="plan-card"><span class="plan-card__number">02</span><span class="plan-card__word">Design</span><span class="plan-card__text">形にしてデザインする</span></li>
+        <li class="plan-card"><span class="plan-card__number">03</span><span class="plan-card__word">Develop</span><span class="plan-card__text">デザインを制作する</span></li>
+        <li class="plan-card"><span class="plan-card__number">04</span><span class="plan-card__word">Deliver</span><span class="plan-card__text">完成して届ける</span></li>
+      </ul>
+    </section>
+
+    <!-- ===== 経歴: the curved line is one image behind the five steps ===== -->
+    <section class="history container">
+      <h2 class="section-title section-title--primary section-title--left">経歴</h2>
+      <div class="timeline">
+        <img class="timeline__curve" src="assets/icons/profile-timeline-curve.svg" alt="" width="897" height="94" loading="lazy">
+        <ol class="timeline__list">
+          <li class="timeline__item">
+            <span class="timeline__icon"><img src="assets/icons/profile-timeline-pencil.svg" alt="" width="33" height="33" loading="lazy"></span>
+            <p>2020–2024<br>IT Engineering</p>
+          </li>
+          <li class="timeline__item">
+            <span class="timeline__icon"><img src="assets/icons/profile-timeline-plane.svg" alt="" width="33" height="32" loading="lazy"></span>
+            <p>2024<br>日本でスタート</p>
+          </li>
+          <li class="timeline__item">
+            <span class="timeline__icon"><img src="assets/icons/profile-timeline-note.svg" alt="" width="32" height="25" loading="lazy"></span>
+            <p>2024–2026<br>日本語を学ぶ</p>
+          </li>
+          <li class="timeline__item">
+            <span class="timeline__icon"><img src="assets/icons/profile-timeline-pc.svg" alt="" width="33" height="28" loading="lazy"></span>
+            <p>2026–2028<br>神戸電子専門学校</p>
+          </li>
+          <li class="timeline__item">
+            <span class="timeline__icon"><img src="assets/icons/profile-timeline-send.svg" alt="" width="33" height="27" loading="lazy"></span>
+            <p>将来<br>Webデザイナー</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== 好きなこと ===== -->
+    <section class="hobby container">
+      <h2 class="section-title section-title--primary section-title--left">好きなこと</h2>
+      <p class="hobby__lead">日常の中でリフレッシュできることや、<br>自分の感性を豊かにしてくれることが好きです。</p>
+      <div class="hobby__grid">
+        <article class="hobby-card">
+          <span class="hobby-card__tag">01</span>
+          <h3>ファッション</h3>
+          <p class="hobby-card__label">FASHION</p>
+          <ul class="hobby-card__list">
+            <li>・ファッションやコーディネートを楽しみます。</li>
+            <li>・色や素材の組み合わせを見ることが好きです。</li>
+          </ul>
+          <img class="hobby-card__corner" src="assets/icons/profile-corner-a.svg" alt="" width="143" height="115" loading="lazy">
+        </article>
+        <article class="hobby-card">
+          <span class="hobby-card__tag">02</span>
+          <h3>旅行・写真</h3>
+          <p class="hobby-card__label">TRAVEL &amp; PHOTO</p>
+          <ul class="hobby-card__list">
+            <li>•新しい場所を訪れることが好きです。</li>
+            <li>•景色や街並みの写真を撮ります。</li>
+          </ul>
+          <img class="hobby-card__corner" src="assets/icons/profile-corner-b.svg" alt="" width="143" height="91" loading="lazy">
+        </article>
+        <article class="hobby-card">
+          <span class="hobby-card__tag">03</span>
+          <h3>アニメ</h3>
+          <p class="hobby-card__label">ANIME</p>
+          <ul class="hobby-card__list">
+            <li>・アニメを観ることが好きです。</li>
+            <li>・キャラクターデザインからデザインのアイデアをもらいます。</li>
+          </ul>
+          <img class="hobby-card__corner" src="assets/icons/profile-corner-a.svg" alt="" width="143" height="115" loading="lazy">
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== Footer: the same block as on the Home page ===== -->
+  <footer class="site-footer">
+    <div class="site-footer__top container">
+      <div class="site-footer__message">
+        <p class="site-footer__title">一緒に、価値のあるデザインを作りましょう！</p>
+        <p>Webデザインを中心に、<br>伝わりやすく使いやすいデザインを大切にしています。</p>
+        <a class="button button--white" href="contact.html">お問い合わせ →</a>
+      </div>
+      <div class="site-footer__social">
+        <p>Social / Contact</p>
+        <ul class="social-icons social-icons--footer">
+          <li><img src="assets/icons/footer-instagram.svg" alt="Instagram" width="41" height="41"></li>
+          <li><img src="assets/icons/footer-mail.svg" alt="メール" width="41" height="38"></li>
+          <li><img src="assets/icons/footer-line.svg" alt="LINE" width="50" height="50"></li>
+          <li><img src="assets/icons/footer-facebook.svg" alt="Facebook" width="43" height="43"></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__bar">
+      <div class="site-footer__bar-inner container">
+        <p>© 2026 HSU YAMIN HTIKE. All Rights Reserved.</p>
+        <a class="site-footer__credit" href="https://icons8.com" target="_blank" rel="noopener">Icons by Icons8</a>
+        <nav class="site-footer__nav" aria-label="フッターメニュー">
+          <a href="index.html">ホーム</a>
+          <span aria-hidden="true">｜</span>
+          <a href="profile.html">プロフィール</a>
+          <span aria-hidden="true">｜</span>
+          <a href="works.html">作品</a>
+          <span aria-hidden="true">｜</span>
+          <a href="contact.html">お問い合わせ</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
