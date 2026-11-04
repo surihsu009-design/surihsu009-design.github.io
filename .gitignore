@@ -1,0 +1,12 @@
+# Original work files (includes a business card with a phone number)
+my-projects/
+
+# Files downloaded from Figma before conversion
+source-files/
+
+# Local working notes and tool settings
+CLAUDE.md
+.claude/
+
+# macOS system files
+.DS_Store
