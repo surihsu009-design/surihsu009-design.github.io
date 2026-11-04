@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>お問い合わせ | HSU YAMIN HTIKE</title>
+  <meta name="description" content="採用・インターンシップ・制作についてのご連絡など、お気軽にお問い合わせください。">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Noto+Sans+JP:wght@300..700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== Header: the same block as on the Home page ===== -->
+  <header class="site-header container">
+    <a class="site-logo" href="index.html">
+      <img src="assets/images/logo.webp" alt="HYH" width="180" height="66">
+    </a>
+    <nav class="site-nav" aria-label="メインメニュー">
+      <a href="index.html">ホーム</a>
+      <a href="profile.html">プロフィール</a>
+      <a href="works.html">作品</a>
+      <a href="contact.html" aria-current="page">お問い合わせ</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===== Page title, intro and envelope image ===== -->
+    <section class="contact-top container">
+      <div>
+        <h1 class="page-title">お問い合わせ</h1>
+        <p class="contact-top__text">採用・インターンシップ・制作についてのご連絡など、<br>お気軽にお問い合わせください。<br>下記のフォーム、またはメール・SNSから<br>お問い合わせいただけます。</p>
+      </div>
+      <div class="contact-top__visual">
+        <img class="contact-top__circle" src="assets/icons/contact-circle.svg" alt="" width="240" height="239">
+        <img class="contact-top__envelope" src="assets/images/contact-envelope.webp" alt="" width="728" height="588">
+      </div>
+    </section>
+
+    <!-- ===== The form on the left, other contact details on the right ===== -->
+    <section class="contact-panel container">
+      <h2 class="section-title section-title--primary section-title--left">メッセージを送る</h2>
+      <div class="contact-panel__columns">
+
+        <!-- This form sends nothing yet. It connects once the form service account exists.
+             The button is type="button", so clicking it does not reload the page. -->
+        <form class="contact-form">
+            <div class="form-field">
+              <label class="form-field__label" for="name">お名前<span class="form-field__badge">必須</span></label>
+              <input id="name" name="name" type="text" placeholder="例）山田 太郎" autocomplete="name" required>
+            </div>
+            <div class="form-field">
+              <label class="form-field__label" for="email">メールアドレス<span class="form-field__badge">必須</span></label>
+              <input id="email" name="email" type="email" placeholder="例）your@example.com" autocomplete="email" required>
+            </div>
+            <div class="form-field">
+              <label class="form-field__label" for="subject">件名<span class="form-field__badge">必須</span></label>
+              <input id="subject" name="subject" type="text" placeholder="例）お仕事のご依頼について" required>
+            </div>
+            <div class="form-field">
+              <label class="form-field__label" for="type">お問い合わせ種別<span class="form-field__badge">必須</span></label>
+              <select id="type" name="type" required>
+                <option value="" selected disabled hidden>選択してください</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label class="form-field__label" for="message">メッセージ本文<span class="form-field__badge">必須</span></label>
+              <textarea id="message" name="message" placeholder="お問い合わせ内容をご記入ください。" required></textarea>
+            </div>
+            <button class="contact-form__submit" type="button">送信する</button>
+            <p class="contact-form__note">入力いただいた個人情報は、<span class="nowrap">お問い合わせ</span>への回答のためにのみ使用し、<br>それ以外の目的では使用いたしません。</p>
+        </form>
+
+        <div class="contact-side">
+          <div class="contact-card">
+            <h3 class="contact-card__title">他の方法でのご連絡</h3>
+            <div class="contact-way">
+              <span class="contact-way__icon"><img src="assets/icons/contact-mail.svg" alt="" width="35" height="26" loading="lazy"></span>
+              <div>
+                <p class="contact-way__label">メール</p>
+                <p class="contact-way__value"><a href="mailto:surihsu009@gmail.com">surihsu009<wbr>@gmail.com</a></p>
+              </div>
+            </div>
+            <div class="contact-way">
+              <span class="contact-way__icon"><img src="assets/icons/contact-pin.svg" alt="" width="29" height="35" loading="lazy"></span>
+              <div>
+                <p class="contact-way__label">現在地</p>
+                <p class="contact-way__value">神戸・日本</p>
+              </div>
+            </div>
+            <div class="contact-sns">
+              <p class="contact-sns__title">SNS</p>
+              <ul class="contact-sns__list">
+                <li><img src="assets/icons/contact-instagram.svg" alt="Instagram" width="48" height="48" loading="lazy"></li>
+                <li><img src="assets/icons/contact-line.svg" alt="LINE" width="62" height="62" loading="lazy"></li>
+                <li><img src="assets/icons/contact-facebook.svg" alt="Facebook" width="53" height="54" loading="lazy"></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <h3 class="contact-card__title">返信について</h3>
+            <p class="contact-card__lead">通常1〜2営業日以内に<br>ご返信いたします</p>
+            <p class="contact-card__text">内容によってはお時間をいただく場合が<br>ございます。あらかじめご了承ください。</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== よくあるご質問: visual only until the answers are written ===== -->
+    <section class="faq container">
+      <h2 class="section-title section-title--primary">よくあるご質問</h2>
+      <ul class="faq__list">
+        <li>どのような仕事を目指していますか？<span aria-hidden="true">+</span></li>
+        <li>どのようなスキルを学んでいますか？<span aria-hidden="true">+</span></li>
+        <li>採用・インターンシップについて相談できますか？<span aria-hidden="true">+</span></li>
+      </ul>
+      <p class="faq__more">すべて見る →</p>
+    </section>
+
+  </main>
+
+  <!-- ===== Footer: the same block as on the Home page ===== -->
+  <footer class="site-footer">
+    <div class="site-footer__top container">
+      <div class="site-footer__message">
+        <p class="site-footer__title">一緒に、価値のあるデザインを作りましょう！</p>
+        <p>Webデザインを中心に、<br>伝わりやすく使いやすいデザインを大切にしています。</p>
+        <a class="button button--white" href="contact.html">お問い合わせ →</a>
+      </div>
+      <div class="site-footer__social">
+        <p>Social / Contact</p>
+        <ul class="social-icons social-icons--footer">
+          <li><img src="assets/icons/footer-instagram.svg" alt="Instagram" width="41" height="41"></li>
+          <li><img src="assets/icons/footer-mail.svg" alt="メール" width="41" height="38"></li>
+          <li><img src="assets/icons/footer-line.svg" alt="LINE" width="50" height="50"></li>
+          <li><img src="assets/icons/footer-facebook.svg" alt="Facebook" width="43" height="43"></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__bar">
+      <div class="site-footer__bar-inner container">
+        <p>© 2026 HSU YAMIN HTIKE. All Rights Reserved.</p>
+        <a class="site-footer__credit" href="https://icons8.com" target="_blank" rel="noopener">Icons by Icons8</a>
+        <nav class="site-footer__nav" aria-label="フッターメニュー">
+          <a href="index.html">ホーム</a>
+          <span aria-hidden="true">｜</span>
+          <a href="profile.html">プロフィール</a>
+          <span aria-hidden="true">｜</span>
+          <a href="works.html">作品</a>
+          <span aria-hidden="true">｜</span>
+          <a href="contact.html">お問い合わせ</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -90,13 +90,18 @@ a {
 
 /* A small hover effect: only devices with a real mouse get it. */
 @media (hover: hover) {
-  a:hover {
+  a:hover,
+  button:hover {
     opacity: 0.8;
   }
 }
 
 /* A clear ring for people who move through the page with the keyboard. */
-a:focus-visible {
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
   outline: 3px solid var(--color-deep);
   outline-offset: 2px;
 }
@@ -891,6 +896,11 @@ body {
   text-align: left;
 }
 
+/* Keeps a word together, so a line never breaks in the middle of it. */
+.nowrap {
+  white-space: nowrap;
+}
+
 .profile-top {
   display: grid;
   grid-template-columns: 1fr 410px;
@@ -1376,6 +1386,293 @@ body {
 }
 
 /* ==========================================================
+   Contact page
+   ========================================================== */
+.contact-top {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 16px;
+  margin-top: 72px;
+}
+
+/* clamp(smallest, preferred, largest): the text shrinks slightly below
+   1100px wide, so the first line still fits on one line. */
+.contact-top__text {
+  margin-top: 40px;
+  font-size: clamp(20px, 2.18vw, 24px);
+  line-height: 1.7;
+}
+
+/* Wider than its 380px column: the image has an empty edge, and this
+   lines the envelope itself up with the panel below. */
+.contact-top__visual {
+  position: relative;
+  width: 416px;
+  aspect-ratio: 416.52 / 362.38;
+}
+
+.contact-top__circle {
+  position: absolute;
+  top: -1%;
+  left: 23.7%;
+  width: 57.6%;
+}
+
+.contact-top__envelope {
+  position: absolute;
+  top: 9.4%;
+  left: 6.3%;
+  width: 87.4%;
+  opacity: 0.88;
+  transform: rotate(-11.81deg);
+}
+
+.contact-panel {
+  margin-top: 48px;
+  padding: 56px 24px 40px;
+  border-radius: var(--radius-panel);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* minmax(0, ...) lets a column shrink below its content width on small screens. */
+.contact-panel__columns {
+  display: grid;
+  grid-template-columns: minmax(0, 549px) minmax(0, 359px);
+  justify-content: space-between;
+  margin-top: 36px;
+}
+
+.form-field + .form-field {
+  margin-top: 40px;
+}
+
+.form-field__label {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 18px;
+  color: var(--color-primary);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.form-field__badge {
+  padding: 4px 14px;
+  border-radius: var(--radius-panel);
+  background: var(--color-chip);
+  color: var(--color-text);
+  font-size: var(--fs-body);
+  font-weight: 500;
+}
+
+/* Form controls do not inherit the page font by default, so "font: inherit" adds it. */
+.form-field input,
+.form-field select,
+.form-field textarea {
+  display: block;
+  width: 100%;
+  height: 53px;
+  margin-top: 15px;
+  padding: 0 13px;
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius-nav);
+  background: transparent;
+  color: var(--color-text);
+  font: inherit;
+  font-size: var(--fs-body);
+  font-weight: 300;
+}
+
+/* appearance: none removes the browser's own arrow, as in Figma. */
+.form-field select {
+  appearance: none;
+}
+
+.form-field textarea {
+  height: 254px;
+  padding: 13px;
+  line-height: 1.7;
+  resize: vertical;
+}
+
+/* Browsers fade placeholders by default; opacity: 1 keeps the Figma color. */
+.form-field ::placeholder {
+  color: var(--color-text);
+  opacity: 1;
+}
+
+.contact-form__submit {
+  display: block;
+  width: 136px;
+  height: 42px;
+  margin: 24px auto 0;
+  border: 0;
+  border-radius: var(--radius-panel);
+  background: var(--color-chip);
+  color: var(--color-deep);
+  cursor: pointer;
+  font: inherit;
+  font-size: var(--fs-body);
+  transition: opacity 0.2s;
+}
+
+.contact-form__note {
+  margin-top: 24px;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.contact-side {
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+}
+
+/* Less padding on the right, because the email address needs the width. */
+.contact-card {
+  padding: 48px 20px 48px 34px;
+  border-radius: var(--radius-panel);
+  background: var(--color-panel);
+}
+
+.contact-card__title {
+  color: var(--color-primary);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.contact-way {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  margin-top: 36px;
+  padding-bottom: 36px;
+}
+
+/* The line under each row, shorter than the row and drawn with CSS. */
+.contact-way::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 19px;
+  width: 251px;
+  max-width: 100%;
+  height: 2px;
+  background: var(--color-line);
+}
+
+.contact-way__icon {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.contact-way__label {
+  color: var(--color-primary);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+}
+
+/* overflow-wrap: anywhere lets the long email address wrap on narrow screens. */
+.contact-way__value {
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.contact-sns {
+  margin-top: 24px;
+}
+
+.contact-sns__title {
+  color: var(--color-primary);
+  font-size: var(--fs-body);
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.contact-sns__list {
+  display: flex;
+  align-items: center;
+  gap: 52px;
+  margin-top: 16px;
+}
+
+/* The Instagram icon sits inside a 64px box in Figma, so the gaps match. */
+.contact-sns__list li:first-child {
+  display: flex;
+  justify-content: center;
+  width: 64px;
+}
+
+.contact-card__lead {
+  margin-top: 20px;
+  color: var(--color-primary);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+}
+
+.contact-card__text {
+  margin-top: 24px;
+  line-height: 1.7;
+}
+
+.faq {
+  margin-top: var(--space-section);
+  padding: 40px 23px 36px;
+  border-radius: var(--radius-panel);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.faq__list {
+  display: grid;
+  gap: 10px;
+  margin-top: 32px;
+}
+
+/* space-between pushes the question left and the + mark right. */
+.faq__list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 54px;
+  padding: 10px 32px 10px 37px;
+  border-radius: var(--radius-nav);
+  background: rgba(179, 158, 209, 0.35);
+  color: var(--color-primary);
+  font-size: var(--fs-body);
+  line-height: 1.5;
+}
+
+.faq__list span {
+  font-size: 24px;
+}
+
+.faq__more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 118px;
+  height: 31px;
+  margin: 24px auto 0;
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius-panel);
+  color: var(--color-primary);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* ==========================================================
    Tablet: 1023px wide and below
    A media query applies these rules only on smaller screens.
    ========================================================== */
@@ -1513,6 +1810,28 @@ body {
   .works-group__cards {
     gap: 40px;
     margin-top: 16px;
+  }
+
+  .contact-top {
+    grid-template-columns: 1fr 300px;
+    margin-top: 40px;
+  }
+
+  .contact-top__text {
+    font-size: var(--fs-body);
+  }
+
+  .contact-top__visual {
+    width: 100%;
+  }
+
+  .contact-panel__columns {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 48px;
+  }
+
+  .contact-side {
+    gap: 32px;
   }
 }
 
@@ -1758,5 +2077,71 @@ body {
   .coming-card {
     min-height: 340px;
     margin-bottom: 6px;
+  }
+
+  .contact-top {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-top__text {
+    font-size: 18px;
+  }
+
+  .contact-top__visual {
+    width: min(100%, 300px);
+    margin-inline: auto;
+  }
+
+  .contact-panel {
+    padding: 40px 16px 32px;
+  }
+
+  .form-field__label {
+    font-size: var(--fs-body);
+  }
+
+  .form-field__badge {
+    padding: 2px 10px;
+    font-size: var(--fs-small);
+  }
+
+  /* 16px or larger stops iPhones zooming in when a field is tapped. */
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    font-size: var(--fs-small);
+  }
+
+  .contact-card__text br {
+    display: none;
+  }
+
+  .contact-card {
+    padding: 32px 20px;
+  }
+
+  .contact-way::after {
+    left: 0;
+    width: 100%;
+  }
+
+  .contact-way__label,
+  .contact-way__value {
+    font-size: var(--fs-small);
+  }
+
+  /* space-between shares out whatever width the phone has. */
+  .contact-sns__list {
+    justify-content: space-between;
+    gap: 0;
+  }
+
+  .faq {
+    padding: 32px 16px;
+  }
+
+  .faq__list li {
+    padding: 10px 16px;
+    font-size: 18px;
   }
 }
