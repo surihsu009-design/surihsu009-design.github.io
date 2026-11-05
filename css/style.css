@@ -2943,7 +2943,12 @@ body {
   }
 
   .basic-info {
-    padding: 24px 20px;
+    padding: 24px 16px;
+  }
+
+  /* 18px fits グラフィックデザイン学科 on one line on most phones. */
+  .basic-info dd {
+    font-size: 18px;
   }
 
   .about__visual {
@@ -3276,5 +3281,31 @@ body {
   .zoom-view__spread img {
     max-width: 92vw;
     max-height: none;
+  }
+}
+
+/* ==========================================================
+   Very small phones: 374px wide and below
+   ========================================================== */
+@media (max-width: 374px) {
+  .basic-info {
+    padding: 20px 12px;
+  }
+
+  .basic-info__row {
+    grid-template-columns: 48px 1fr;
+    column-gap: 10px;
+  }
+
+  .basic-info dt img {
+    width: 48px;
+  }
+
+  .basic-info dd {
+    font-size: 15px;
+  }
+
+  .basic-info dd.basic-info__name {
+    font-size: 20px;
   }
 }
