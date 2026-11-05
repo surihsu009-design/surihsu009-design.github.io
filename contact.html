@@ -49,9 +49,10 @@
       <h2 class="section-title section-title--primary section-title--left">メッセージを送る</h2>
       <div class="contact-panel__columns">
 
-        <!-- This form sends nothing yet. It connects once the form service account exists.
-             The button is type="button", so clicking it does not reload the page. -->
-        <form class="contact-form">
+        <!-- action is where the answers go, here Formspree, which emails them to her.
+             method="post" sends them hidden, not in the page address.
+             required makes the browser stop and ask for any empty field first. -->
+        <form class="contact-form" action="https://formspree.io/f/xvkkllby" method="post">
             <div class="form-field">
               <label class="form-field__label" for="name">お名前<span class="form-field__badge">必須</span></label>
               <input id="name" name="name" type="text" placeholder="例）山田 太郎" autocomplete="name" required>
@@ -78,7 +79,7 @@
               <label class="form-field__label" for="message">メッセージ本文<span class="form-field__badge">必須</span></label>
               <textarea id="message" name="message" placeholder="お問い合わせ内容をご記入ください。" required></textarea>
             </div>
-            <button class="contact-form__submit" type="button">送信する</button>
+            <button class="contact-form__submit" type="submit">送信する</button>
             <p class="contact-form__note">入力いただいた個人情報は、<span class="nowrap">お問い合わせ</span>への回答のためにのみ使用し、<br>それ以外の目的では使用いたしません。</p>
         </form>
 
